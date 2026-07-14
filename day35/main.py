@@ -1,14 +1,11 @@
 import requests 
 import smtplib
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 MY_LAT = 6.244203
 MY_LONG = -75.581215
 
-api_key = os.getenv("OWN_API_KEY")
+api_key = os.getenv("OWN_API_WEATHER_KEY")
 
 parameters = {
     "lat": MY_LAT,
