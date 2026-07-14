@@ -1,0 +1,38 @@
+name: Weather Alert Bot
+
+on:
+  # Permite ejecutar el script manualmente desde la pestaña "Actions" de GitHub
+  workflow_dispatch:
+  
+  # Lo ejecuta automáticamente todos los días (ejemplo: a las 6:00 AM UTC)
+  schedule:
+    - cron: '0 9 * * *'
+
+jobs:
+  run-bot:
+    runs-ok: ubuntu-latest
+
+    steps:
+    - name: Clonar el repositorio
+      uses: actions/checkout@v4
+
+    - name: Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Instalar dependencias
+      run: |
+        python -m pip upgrade pip
+        # Si tienes un archivo requirements.txt descomenta la siguiente línea:
+        # pip install -r requirements.txt
+        # Si usas alguna librería externa (como requests para el clima), instálala aquí:
+        pip install requests
+
+    - name: Ejecutar el script de Python
+      # Aquí es donde mapeamos los secretos guardados en GitHub hacia el entorno del servidor
+      env:
+        EMAIL_USER: ${{ secrets.EMAIL_USER }}
+        EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+        OWN_API_WEATHER_KEY: ${{ secrets.OWN_API_WEATHER_KEY}}
+      run: python main.py
