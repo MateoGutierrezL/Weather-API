@@ -44,4 +44,4 @@ jobs:
           MY_EMAIL: ${{ secrets.MY_EMAIL }}
           MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
           OWN_API_WEATHER_KEY: ${{ secrets.OWN_API_WEATHER_KEY}}
-        run: python main.py
+        run: day35/python main.py
