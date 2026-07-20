@@ -29,8 +29,8 @@ for id in weather_id_list:
         break
 
 if will_rain:
-    email = os.getenv("EMAIL_USER")
-    password = os.getenv("EMAIL_PASS")
+    email = os.getenv("MY_EMAIL")
+    password = os.getenv("MY_PASSWORD")
 
     if not email or not password:
         raise ValueError("Error: EMAIL_USER o EMAIL_PASS no están definidas en las variables de entorno.")
