@@ -32,7 +32,10 @@ if will_rain:
     email = os.getenv("EMAIL_USER")
     password = os.getenv("EMAIL_PASS")
 
-    with smtplib.SMTP("smtp.gmail.com") as connection:
+    if not email or not password:
+        raise ValueError("Error: EMAIL_USER o EMAIL_PASS no están definidas en las variables de entorno.")
+
+    with smtplib.SMTP("smtp.gmail.com", 587) as connection:
         connection.starttls()
         connection.login(user= email, password=password)
         connection.sendmail(
