@@ -41,7 +41,7 @@ jobs:
         env:
           # Your secrets are available as environment variables
           # Add more secrets in Settings > Secrets > Actions
-          MY_EMAIL: ${{ secrets.MY_EMAIL }}
-          MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
+          MY_EMAIL: ${{ secrets.EMAIL_USER }}
+          MY_PASSWORD: ${{ secrets.EMAIL_PASS }}
           OWN_API_WEATHER_KEY: ${{ secrets.OWN_API_WEATHER_KEY}}
         run: python day35/main.py
